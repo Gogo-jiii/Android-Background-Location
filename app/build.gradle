@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.backgroundlocation"
-        minSdkVersion 21
-        targetSdkVersion 30
+        minSdkVersion 29
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
@@ -41,9 +41,7 @@ dependencies {
     //location
     implementation 'com.google.android.gms:play-services-location:17.1.0'
 
-    def work_version = "2.5.0"
-
     // (Java only)
-    implementation "androidx.work:work-runtime:$work_version"
+    implementation "androidx.work:work-runtime:2.7.1"
     implementation 'androidx.concurrent:concurrent-listenablefuture-callback:1.0.0-beta01'
 }

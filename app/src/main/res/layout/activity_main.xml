@@ -7,12 +7,23 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btnStartBackgroundLocation"
+        android:id="@+id/btnAskForegroundPermissions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="start background location"
+        android:text="Ask Foreground Permissions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnGetBackgroundLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Get Background Location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAskForegroundPermissions" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
