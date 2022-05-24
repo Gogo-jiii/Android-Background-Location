@@ -11,11 +11,9 @@ import android.os.Looper;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -55,7 +53,7 @@ public class LocationManager {
         this.fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context);
         Intent intent = new Intent("local_broadcast");
         StringBuilder stringBuilder = new StringBuilder();
-        //continuous updates
+
         locationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
@@ -67,7 +65,8 @@ public class LocationManager {
                     Log.d("TAG", "Lat: " + location.getLatitude() + "=>" + "Long: "
                             + location.getLongitude());
                     stringBuilder.setLength(0);
-                    stringBuilder.append("Time: " + System.currentTimeMillis() + "\nLat: " + location.getLatitude() + "=>" +
+                    stringBuilder.append("Time: " + System.currentTimeMillis() + "\nLat: " +
+                            location.getLatitude() + "=>" +
                             "Long: " + location.getLongitude());
 
                     intent.putExtra("location", stringBuilder.toString());
@@ -92,7 +91,6 @@ public class LocationManager {
         task.addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
             @Override
             public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
-
             }
         });
 
@@ -112,9 +110,9 @@ public class LocationManager {
         });
     }
 
-    //call this in onResume
     public void startLocationUpdates() {
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(context,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;

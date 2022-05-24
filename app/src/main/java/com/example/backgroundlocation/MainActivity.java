@@ -6,20 +6,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.work.BackoffPolicy;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
-
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
-    public Activity activty;
+    public Activity activity;
     Button btnAskForegroundPermissions, btnGetBackgroundLocation;
-    private final String[] foreground_location_permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
+    private final String[] foreground_location_permissions =
+            {Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
     };
 
@@ -35,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        activty = MainActivity.this;
+        activity = MainActivity.this;
         btnAskForegroundPermissions = findViewById(R.id.btnAskForegroundPermissions);
         btnGetBackgroundLocation = findViewById(R.id.btnGetBackgroundLocation);
+
         permissionManager = PermissionManager.getInstance(this);
         locationManager = LocationManager.getInstance(this);
 
@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
                     startLocationWork();
                 } else {
                     locationManager.createLocationRequest();
-                    Toast.makeText(MainActivity.this, "Location service is not enabled.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Location service is not enabled.", Toast.LENGTH_SHORT)
+                            .show();
                 }
             }
         });
@@ -74,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 startLocationWork();
             } else {
                 locationManager.createLocationRequest();
-                Toast.makeText(MainActivity.this, "Location service is not enabled.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Location service is not enabled.", Toast.LENGTH_SHORT)
+                        .show();
             }
         }
     }
